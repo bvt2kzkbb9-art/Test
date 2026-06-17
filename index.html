@@ -1,246 +1,155 @@
-import { motion } from "framer-motion";
-import {
-  Sword,
-  Trophy,
-  Shield,
-  MessageCircle,
-  User,
-  Flame
-} from "lucide-react";
-
-export default function DarkFantasyDashboard() {
-  const navItems = [
-    { icon: Flame, label: "Feed" },
-    { icon: Sword, label: "Arena" },
-    { icon: Trophy, label: "Ranking" },
-    { icon: MessageCircle, label: "Messenger" },
-    { icon: User, label: "Profile" }
-  ];
-
-  return (
-    <div className="relative min-h-screen overflow-hidden bg-black text-white">
-
-      {/* Animated Background */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#5b21b655,transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,#0ea5e955,transparent_40%)]" />
-
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.2, 0.5, 0.2]
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity
-          }}
-          className="absolute top-0 left-0 h-[600px] w-[600px] rounded-full bg-purple-600 blur-[200px]"
-        />
-
-        <motion.div
-          animate={{
-            x: [-100, 100, -100]
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity
-          }}
-          className="absolute bottom-0 right-0 h-[500px] w-[500px] rounded-full bg-cyan-500 blur-[220px]"
-        />
-      </div>
-
-      {/* Fog */}
-      <motion.div
-        animate={{
-          x: [-100, 100, -100]
-        }}
-        transition={{
-          duration: 30,
-          repeat: Infinity
-        }}
-        className="absolute inset-0 opacity-20 bg-[url('/fog.png')] bg-cover"
-      />
-
-      <div className="relative z-10 px-6 pt-14 pb-32">
-
-        {/* Hero */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="relative overflow-hidden rounded-[40px] border border-purple-500/30 bg-white/5 backdrop-blur-xl"
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-cyan-500/10" />
-
-          <div className="relative p-8">
-
-            <div className="flex justify-between items-start">
-
-              <div>
-                <p className="text-purple-300 uppercase tracking-widest text-xs">
-                  Weekend Warrior
-                </p>
-
-                <h1 className="mt-2 text-5xl font-black leading-none">
-                  SHADOW
-                  <br />
-                  ARENA
-                </h1>
-
-                <p className="mt-4 text-gray-400">
-                  Enter the darkness and climb the ranks.
-                </p>
-              </div>
-
-              <motion.div
-                animate={{
-                  rotate: [0, 3, -3, 0]
-                }}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity
-                }}
-                className="relative"
-              >
-                <div className="h-28 w-28 rounded-full bg-gradient-to-br from-purple-500 to-cyan-500 p-1">
-
-                  <div className="flex h-full w-full items-center justify-center rounded-full bg-black">
-                    <Shield size={42} />
-                  </div>
-
-                </div>
-
-                <div className="absolute inset-0 rounded-full bg-purple-500 blur-xl opacity-50" />
-              </motion.div>
-
-            </div>
-
-            {/* XP */}
-            <div className="mt-8">
-              <div className="flex justify-between text-sm mb-2">
-                <span>Level 47</span>
-                <span>89%</span>
-              </div>
-
-              <div className="h-4 rounded-full bg-white/10 overflow-hidden">
-
-                <motion.div
-                  animate={{
-                    width: ["70%", "89%", "70%"]
-                  }}
-                  transition={{
-                    duration: 6,
-                    repeat: Infinity
-                  }}
-                  className="h-full rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500"
-                />
-
-              </div>
-            </div>
-
-          </div>
-        </motion.div>
-
-        {/* Stats */}
-        <div className="grid grid-cols-2 gap-4 mt-6">
-
-          {[
-            ["Power", "98,420"],
-            ["Followers", "14,233"],
-            ["Wins", "1,342"],
-            ["Rank", "#12"]
-          ].map(([title, value]) => (
-            <motion.div
-              whileHover={{
-                scale: 1.04,
-                rotateX: 8,
-                rotateY: 8
-              }}
-              key={title}
-              className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-5"
-            >
-              <p className="text-gray-400 text-sm">{title}</p>
-              <h3 className="text-3xl font-bold mt-2">{value}</h3>
-            </motion.div>
-          ))}
-
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Weekend Warrior – Sala Chwały</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <div class="app-inner">
+      <!-- Górny pasek -->
+      <header class="top-bar">
+        <div class="top-bar-left">
+          <div class="top-bar-title">Weekend Warrior Social</div>
+          <div class="top-bar-subtitle">Sala Chwały</div>
         </div>
-
-        {/* Quest Card */}
-        <motion.div
-          whileHover={{
-            scale: 1.02
-          }}
-          className="mt-6 rounded-[32px] border border-red-500/20 bg-gradient-to-br from-red-950/40 to-black p-6"
-        >
-          <h2 className="text-xl font-bold">
-            Daily Quest
-          </h2>
-
-          <p className="text-gray-400 mt-2">
-            Win 3 Arena Battles
-          </p>
-
-          <div className="mt-5 h-3 rounded-full bg-white/10 overflow-hidden">
-            <div className="w-2/3 h-full bg-red-500 rounded-full" />
-          </div>
-
-          <div className="mt-4 text-red-400">
-            Reward: 500 XP + Shadow Chest
-          </div>
-        </motion.div>
-
-      </div>
-
-      {/* Floating Navigation */}
-      <div className="fixed bottom-6 left-4 right-4 z-50">
-
-        <div className="rounded-full border border-white/10 bg-black/40 backdrop-blur-2xl px-4 py-3">
-
-          <div className="flex justify-between">
-
-            {navItems.map((item, index) => {
-              const Icon = item.icon;
-
-              return (
-                <motion.button
-                  key={item.label}
-                  whileTap={{ scale: 0.9 }}
-                  whileHover={{
-                    scale: 1.15,
-                    y: -5
-                  }}
-                  className={`relative flex h-14 w-14 items-center justify-center rounded-full
-                    ${
-                      index === 1
-                        ? "bg-purple-600 shadow-[0_0_40px_rgba(168,85,247,0.8)]"
-                        : "bg-white/5"
-                    }
-                  `}
-                >
-                  <Icon size={24} />
-
-                  {index === 1 && (
-                    <motion.div
-                      animate={{
-                        scale: [1, 1.3, 1]
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity
-                      }}
-                      className="absolute inset-0 rounded-full border border-purple-400"
-                    />
-                  )}
-                </motion.button>
-              );
-            })}
-
-          </div>
-
+        <div class="top-bar-actions">
+          <button class="icon-button">
+            <span class="icon-button-badge"></span>
+          </button>
+          <button class="icon-button"></button>
+          <button class="icon-button"></button>
         </div>
+      </header>
 
-      </div>
+      <!-- Aktywne wyzwania -->
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title">Aktywne wyzwania</div>
+          <div class="section-subtitle">Twoje aktualne misje</div>
+        </div>
+        <div class="challenges">
+          <div class="challenge-card">
+            <div class="challenge-title">Weekendowy Raid – 5 treningów</div>
+            <div class="challenge-meta">
+              <span>3 / 5 ukończone</span>
+              <span>Do końca: 2 dni</span>
+            </div>
+            <div class="challenge-progress-bar">
+              <div class="challenge-progress-fill"></div>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      <!-- Twoja seria -->
+      <section class="section">
+        <div class="streak">
+          <div class="streak-info">
+            <div class="streak-label">Twoja seria</div>
+            <div class="streak-days">12 dni</div>
+            <div class="streak-note">Nie przerywaj – bonus XP rośnie</div>
+          </div>
+          <div class="streak-badge">
+            <div class="streak-badge-label">Bonus XP</div>
+            <div class="streak-badge-value">+18%</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ranking wojowników -->
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title">Ranking wojowników</div>
+          <div class="section-subtitle">Top 3 + Twoja pozycja</div>
+        </div>
+        <div class="ranking">
+          <div class="ranking-top3">
+            <div class="ranking-card">
+              <div class="ranking-position">#2</div>
+              <div class="ranking-avatar"></div>
+              <div class="ranking-name">Ragnar</div>
+              <div class="ranking-xp">12 400 XP</div>
+            </div>
+            <div class="ranking-card ranking-card--me">
+              <div class="ranking-position">Ty #1</div>
+              <div class="ranking-avatar"></div>
+              <div class="ranking-name">Weekend Warrior</div>
+              <div class="ranking-xp">13 800 XP</div>
+            </div>
+            <div class="ranking-card">
+              <div class="ranking-position">#3</div>
+              <div class="ranking-avatar"></div>
+              <div class="ranking-name">Valeria</div>
+              <div class="ranking-xp">11 900 XP</div>
+            </div>
+          </div>
+          <div class="ranking-more">
+            <button class="ranking-more-button">Pełny ranking</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tablice wojowników -->
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title">Tablice wojowników</div>
+          <div class="section-subtitle">Statystyki szczegółowe</div>
+        </div>
+        <div class="boards">
+          <div class="boards-grid">
+            <div class="board-tile">
+              <div class="board-title">Najdłuższa seria</div>
+              <div class="board-value">27 dni</div>
+              <div class="board-meta">Twój rekord</div>
+            </div>
+            <div class="board-tile">
+              <div class="board-title">Wygrane wyzwania</div>
+              <div class="board-value">14</div>
+              <div class="board-meta">Ostatnie 30 dni</div>
+            </div>
+            <div class="board-tile">
+              <div class="board-title">XP w tym tygodniu</div>
+              <div class="board-value">3 200</div>
+              <div class="board-meta">Top 5%</div>
+            </div>
+            <div class="board-tile">
+              <div class="board-title">PvP</div>
+              <div class="board-value">18–4</div>
+              <div class="board-meta">Bilans walk</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Dolna nawigacja -->
+      <nav class="bottom-nav">
+        <div class="bottom-nav-inner">
+          <div class="bottom-nav-item">
+            <div class="bottom-nav-icon"></div>
+            <span>Arena</span>
+          </div>
+          <div class="bottom-nav-item">
+            <div class="bottom-nav-icon"></div>
+            <span>Kroniki</span>
+          </div>
+          <div class="bottom-nav-item">
+            <div class="bottom-nav-icon"></div>
+            <span>Misje</span>
+          </div>
+          <div class="bottom-nav-item bottom-nav-item--active">
+            <div class="bottom-nav-icon"></div>
+            <span>Chwała</span>
+          </div>
+          <div class="bottom-nav-item">
+            <div class="bottom-nav-icon"></div>
+            <span>Bohater</span>
+          </div>
+        </div>
+      </nav>
     </div>
-  );
-}
+  </div>
+</body>
+</html>
