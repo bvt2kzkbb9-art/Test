@@ -1,8 +1,8 @@
-/* ===== GLOBAL DARK MODE ===== */
+/* ===== GLOBAL DARK VOID ===== */
 
 body {
   background: #000;
-  color: #E5E5E5;
+  color: #E4E4E4;
   font-family: Inter, system-ui, sans-serif;
 }
 
@@ -13,35 +13,35 @@ body {
   overflow: hidden;
 }
 
-/* zimna mgła */
+/* zimna mgła jak w zbrojowni */
 .app::before {
   content: "";
   position: absolute;
   inset: -40%;
   background:
-    radial-gradient(circle at 50% 0%, rgba(255,255,255,0.06) 0%, transparent 60%),
-    radial-gradient(circle at 80% 20%, rgba(180,180,180,0.04) 0%, transparent 70%);
-  filter: blur(40px);
+    radial-gradient(circle at 50% 0%, rgba(255,255,255,0.05) 0%, transparent 60%),
+    radial-gradient(circle at 80% 20%, rgba(180,180,180,0.03) 0%, transparent 70%);
+  filter: blur(50px);
   opacity: 0.7;
   pointer-events: none;
 }
 
-/* ===== METALICZNE KARTY ===== */
+/* ===== GOTYCKIE METALICZNE KARTY ===== */
 
 .section {
-  background: linear-gradient(145deg, #0F0F0F 0%, #050505 60%, #000 100%);
+  background: linear-gradient(145deg, #111 0%, #050505 60%, #000 100%);
   border-radius: 18px;
   padding: 14px;
   border: 1px solid rgba(255,255,255,0.06);
   box-shadow:
     0 0 0 1px rgba(255,255,255,0.05),
-    0 12px 28px rgba(0,0,0,0.95),
-    inset 0 0 18px rgba(255,255,255,0.03);
+    0 14px 32px rgba(0,0,0,1),
+    inset 0 0 22px rgba(255,255,255,0.03);
   position: relative;
   overflow: hidden;
 }
 
-/* metaliczny połysk */
+/* stalowy połysk */
 .section::before {
   content: "";
   position: absolute;
@@ -57,18 +57,18 @@ body {
   opacity: 0.7;
 }
 
-/* ===== METALICZNE PRZYCISKI ===== */
+/* ===== PRZYCISKI – TARCZE KRZYŻOWCÓW ===== */
 
 .icon-button {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background: radial-gradient(circle at 30% 0%, #2A2A2A 0%, #0F0F0F 60%, #000 100%);
   border: 1px solid rgba(255,255,255,0.25);
   box-shadow:
     0 0 0 1px rgba(255,255,255,0.1),
-    0 10px 24px rgba(0,0,0,1),
-    inset 0 0 12px rgba(255,255,255,0.05);
+    0 12px 28px rgba(0,0,0,1),
+    inset 0 0 14px rgba(255,255,255,0.05);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,43 +81,77 @@ body {
   border-color: rgba(255,255,255,0.6);
   box-shadow:
     0 0 0 1px rgba(255,255,255,0.4),
-    0 14px 30px rgba(0,0,0,1),
-    inset 0 0 18px rgba(255,255,255,0.12);
+    0 16px 36px rgba(0,0,0,1),
+    inset 0 0 20px rgba(255,255,255,0.12);
 }
 
-/* ===== METALICZNE KAFELKI ===== */
+/* ===== WYZWANIA – PŁYTY ZBROJI ===== */
 
-.board-tile {
-  background: linear-gradient(145deg, #111 0%, #050505 60%, #000 100%);
+.challenge-card {
+  background: linear-gradient(145deg, #1A1A1A 0%, #0A0A0A 60%, #000 100%);
   border-radius: 14px;
   padding: 12px;
   border: 1px solid rgba(255,255,255,0.08);
   box-shadow:
     0 0 0 1px rgba(255,255,255,0.05),
-    0 12px 26px rgba(0,0,0,1),
-    inset 0 0 14px rgba(255,255,255,0.03);
+    0 14px 30px rgba(0,0,0,1),
+    inset 0 0 18px rgba(255,255,255,0.03);
 }
 
-/* ===== METALICZNY DOLNY NAV ===== */
+/* ===== SERIA – RYCERSKI MEDALION ===== */
+
+.streak-badge {
+  background: linear-gradient(145deg, #222 0%, #0D0D0D 60%, #000 100%);
+  border-radius: 999px;
+  padding: 10px 14px;
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.1),
+    0 12px 26px rgba(0,0,0,1),
+    inset 0 0 14px rgba(255,255,255,0.05);
+}
+
+/* ===== RANKING – PODIUM RYCERZY ===== */
+
+.ranking-card {
+  background: linear-gradient(145deg, #1A1A1A 0%, #0A0A0A 60%, #000 100%);
+  border-radius: 16px;
+  padding: 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.05),
+    0 16px 36px rgba(0,0,0,1),
+    inset 0 0 18px rgba(255,255,255,0.03);
+}
+
+.ranking-card--me {
+  border-color: rgba(255,255,255,0.4);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.3),
+    0 22px 44px rgba(0,0,0,1),
+    inset 0 0 22px rgba(255,255,255,0.08);
+}
+
+/* ===== DOLNY NAV – PAS RYCERSKI ===== */
 
 .bottom-nav-inner {
-  background: linear-gradient(180deg, #0F0F0F 0%, #000 100%);
+  background: linear-gradient(180deg, #111 0%, #000 100%);
   border-radius: 20px;
   border: 1px solid rgba(255,255,255,0.08);
   box-shadow:
     0 0 0 1px rgba(255,255,255,0.05),
-    0 -14px 30px rgba(0,0,0,1),
+    0 -16px 36px rgba(0,0,0,1),
     inset 0 0 18px rgba(255,255,255,0.03);
 }
 
 .bottom-nav-item--active {
-  color: #CFCFCF;
+  color: #D0D0D0;
 }
 
 .bottom-nav-item--active .bottom-nav-icon {
   border: 1px solid rgba(255,255,255,0.4);
   box-shadow:
     0 0 0 1px rgba(255,255,255,0.2),
-    0 10px 20px rgba(0,0,0,1),
-    inset 0 0 12px rgba(255,255,255,0.1);
+    0 12px 24px rgba(0,0,0,1),
+    inset 0 0 14px rgba(255,255,255,0.1);
 }
