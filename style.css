@@ -1,537 +1,123 @@
-/* ===== RESET & BAZA ===== */
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html, body {
-  height: 100%;
-}
+/* ===== GLOBAL DARK MODE ===== */
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-    "Inter", "Roboto", sans-serif;
-  background-color: #05060A;
-  color: #E8E4D8;
+  background: #000;
+  color: #E5E5E5;
+  font-family: Inter, system-ui, sans-serif;
 }
 
-/* Tło – głęboka ciemność + subtelna poświata */
 .app {
-  max-width: 430px;
-  margin: 0 auto;
+  background: radial-gradient(circle at 50% 0%, #0A0A0A 0%, #000 70%);
   min-height: 100vh;
-  background:
-    radial-gradient(circle at top, #151824 0%, #05060A 55%, #020308 100%);
-  display: flex;
-  flex-direction: column;
   position: relative;
   overflow: hidden;
 }
 
-/* mgła / poświaty */
+/* zimna mgła */
 .app::before {
   content: "";
   position: absolute;
   inset: -40%;
   background:
-    radial-gradient(circle at 10% 0%, rgba(252, 211, 77, 0.18) 0, transparent 55%),
-    radial-gradient(circle at 90% 10%, rgba(248, 113, 113, 0.16) 0, transparent 55%),
-    radial-gradient(circle at 50% 100%, rgba(59, 130, 246, 0.12) 0, transparent 60%);
-  mix-blend-mode: screen;
-  opacity: 0.9;
-  pointer-events: none;
-}
-
-.app-inner {
-  position: relative;
-  z-index: 1;
-  padding: 12px 14px 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-/* ===== GÓRNY PASEK (STAŁY) – bardziej mroczny, szklany ===== */
-
-.top-bar {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 6px 12px;
-  background: linear-gradient(
-    to bottom,
-    rgba(5, 6, 10, 0.96),
-    rgba(5, 6, 10, 0.88),
-    transparent
-  );
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-}
-
-.top-bar-left {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.top-bar-title {
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: #C6A15B;
-  opacity: 0.9;
-}
-
-.top-bar-subtitle {
-  font-size: 18px;
-  font-weight: 600;
-}
-
-/* przyciski – 3D, metaliczne */
-
-.top-bar-actions {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.icon-button {
-  position: relative;
-  width: 34px;
-  height: 34px;
-  border-radius: 999px;
-  border: 1px solid rgba(198, 161, 91, 0.55);
-  background:
-    radial-gradient(circle at 30% 0%, #26293a 0, #151824 45%, #05060A 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #F5F5F5;
-  box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 0.9),
-    0 10px 24px rgba(0, 0, 0, 0.95),
-    0 -2px 4px rgba(255, 255, 255, 0.06);
-  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
-}
-
-.icon-button:hover {
-  transform: translateY(-1px);
-  border-color: rgba(246, 207, 143, 0.9);
-  box-shadow:
-    0 0 0 1px rgba(246, 207, 143, 0.4),
-    0 14px 30px rgba(0, 0, 0, 0.98);
-}
-
-.icon-button-badge {
-  position: absolute;
-  top: 3px;
-  right: 3px;
-  width: 9px;
-  height: 9px;
-  border-radius: 999px;
-  background: #F97373;
-  box-shadow:
-    0 0 0 2px #05060A,
-    0 0 10px rgba(248, 113, 113, 0.9);
-}
-
-/* ===== KARTY / SEKCJE – 3D, metaliczne ramki ===== */
-
-.section {
-  background:
-    radial-gradient(circle at top, #1c1f2c 0, #141722 45%, #070910 100%);
-  border-radius: 18px;
-  padding: 12px 12px 11px;
-  border: 1px solid rgba(255, 255, 255, 0.04);
-  box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 1),
-    0 18px 40px rgba(0, 0, 0, 0.98);
-  position: relative;
-  overflow: hidden;
-}
-
-/* górny połysk */
-
-.section::before {
-  content: "";
-  position: absolute;
-  top: -1px;
-  left: 10%;
-  right: 10%;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(246, 207, 143, 0.0) 10%,
-    rgba(246, 207, 143, 0.7) 50%,
-    rgba(246, 207, 143, 0.0) 90%,
-    transparent 100%
-  );
-  opacity: 0.9;
-}
-
-/* delikatna poświata w tle karty */
-
-.section::after {
-  content: "";
-  position: absolute;
-  inset: 25% 5% auto;
-  height: 40%;
-  background:
-    radial-gradient(circle at top, rgba(198, 161, 91, 0.18) 0, transparent 60%);
+    radial-gradient(circle at 50% 0%, rgba(255,255,255,0.06) 0%, transparent 60%),
+    radial-gradient(circle at 80% 20%, rgba(180,180,180,0.04) 0%, transparent 70%);
+  filter: blur(40px);
   opacity: 0.7;
   pointer-events: none;
 }
 
-.section-header {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-bottom: 8px;
-}
+/* ===== METALICZNE KARTY ===== */
 
-.section-title {
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: #C6A15B;
-}
-
-.section-subtitle {
-  font-size: 11px;
-  color: #9B9BA4;
-}
-
-/* ===== AKTYWNE WYZWANIA ===== */
-
-.challenges {
-  position: relative;
-  z-index: 1;
-  margin-top: 4px;
-}
-
-.challenge-card {
-  margin-top: 6px;
-  padding: 10px 10px 9px;
-  border-radius: 14px;
-  background:
-    linear-gradient(145deg, #1b1f2b 0%, #141722 55%, #090b12 100%);
-  border: 1px solid rgba(198, 161, 91, 0.45);
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+.section {
+  background: linear-gradient(145deg, #0F0F0F 0%, #050505 60%, #000 100%);
+  border-radius: 18px;
+  padding: 14px;
+  border: 1px solid rgba(255,255,255,0.06);
   box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 1),
-    0 14px 30px rgba(0, 0, 0, 0.98);
-}
-
-.challenge-title {
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.challenge-meta {
-  display: flex;
-  justify-content: space-between;
-  font-size: 11px;
-  color: #A3A3B0;
-}
-
-.challenge-progress-bar {
-  margin-top: 4px;
-  width: 100%;
-  height: 7px;
-  border-radius: 999px;
-  background: #05060A;
+    0 0 0 1px rgba(255,255,255,0.05),
+    0 12px 28px rgba(0,0,0,0.95),
+    inset 0 0 18px rgba(255,255,255,0.03);
+  position: relative;
   overflow: hidden;
-  box-shadow:
-    inset 0 0 4px rgba(0, 0, 0, 0.9),
-    0 0 8px rgba(0, 0, 0, 0.8);
 }
 
-.challenge-progress-fill {
-  height: 100%;
-  width: 60%;
-  border-radius: 999px;
-  background: linear-gradient(90deg, #F97373, #F6CF8F);
-  box-shadow:
-    0 0 10px rgba(246, 207, 143, 0.8),
-    0 0 16px rgba(248, 113, 113, 0.7);
-}
-
-/* ===== TWOJA SERIA ===== */
-
-.streak {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.streak-info {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.streak-label {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: #9B9BA4;
-}
-
-.streak-days {
-  font-size: 22px;
-  font-weight: 700;
-  color: #F6CF8F;
-  text-shadow: 0 0 12px rgba(246, 207, 143, 0.7);
-}
-
-.streak-note {
-  font-size: 11px;
-  color: #A3A3B0;
-}
-
-.streak-badge {
-  min-width: 90px;
-  padding: 8px 11px;
-  border-radius: 999px;
-  background:
-    radial-gradient(circle at 30% 0%, #26293a 0, #151824 55%, #05060A 100%);
-  border: 1px solid rgba(198, 161, 91, 0.7);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 2px;
-  box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 1),
-    0 14px 30px rgba(0, 0, 0, 0.98);
-}
-
-.streak-badge-label {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: #9B9BA4;
-}
-
-.streak-badge-value {
-  font-size: 14px;
-  font-weight: 600;
-  color: #F6CF8F;
-}
-
-/* ===== RANKING WOJOWNIKÓW ===== */
-
-.ranking {
-  position: relative;
-  z-index: 1;
-  margin-top: 4px;
-}
-
-.ranking-top3 {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 6px;
-  margin-top: 6px;
-}
-
-.ranking-card {
-  flex: 1;
-  border-radius: 16px;
-  padding: 8px 6px 9px;
-  background:
-    linear-gradient(145deg, #1b1f2b 0%, #141722 60%, #070910 100%);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 1),
-    0 16px 34px rgba(0, 0, 0, 0.98);
-}
-
-.ranking-card--me {
-  border-color: rgba(198, 161, 91, 0.9);
-  background:
-    radial-gradient(circle at 30% 0%, rgba(198, 161, 91, 0.22) 0, #141722 55%, #070910 100%);
-  box-shadow:
-    0 0 0 1px rgba(198, 161, 91, 0.5),
-    0 20px 40px rgba(0, 0, 0, 1);
-}
-
-.ranking-position {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: #9B9BA4;
-}
-
-.ranking-avatar {
-  width: 42px;
-  height: 42px;
-  border-radius: 999px;
-  background:
-    radial-gradient(circle at 30% 0%, #26293a 0, #151824 55%, #05060A 100%);
-  border: 1px solid rgba(198, 161, 91, 0.7);
-  box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 1),
-    0 14px 26px rgba(0, 0, 0, 0.98);
-}
-
-.ranking-name {
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.ranking-xp {
-  font-size: 11px;
-  color: #A3A3B0;
-}
-
-.ranking-more {
-  margin-top: 8px;
-  display: flex;
-  justify-content: center;
-}
-
-.ranking-more-button {
-  padding: 7px 16px;
-  border-radius: 999px;
-  border: 1px solid rgba(198, 161, 91, 0.9);
-  background: linear-gradient(90deg, #F97373, #F6CF8F);
-  color: #1A1A1C;
-  font-size: 10px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 1),
-    0 16px 34px rgba(0, 0, 0, 1);
-}
-
-/* ===== TABLICE WOJOWNIKÓW ===== */
-
-.boards {
-  position: relative;
-  z-index: 1;
-  margin-top: 4px;
-}
-
-.boards-grid {
-  margin-top: 6px;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px;
-}
-
-.board-tile {
-  border-radius: 14px;
-  padding: 9px 9px 8px;
-  background:
-    linear-gradient(145deg, #1b1f2b 0%, #141722 60%, #070910 100%);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 1),
-    0 14px 30px rgba(0, 0, 0, 0.98);
-}
-
-.board-title {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: #C6A15B;
-}
-
-.board-value {
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.board-meta {
-  font-size: 11px;
-  color: #A3A3B0;
-}
-
-/* ===== DOLNY PASEK NAWIGACJI – cięższy, 3D ===== */
-
-.bottom-nav {
-  position: sticky;
-  bottom: 0;
-  z-index: 20;
-  margin-top: auto;
-  padding-top: 8px;
-  background: linear-gradient(
-    to top,
-    rgba(2, 3, 8, 0.98),
-    rgba(2, 3, 8, 0.9),
+/* metaliczny połysk */
+.section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 2px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255,255,255,0.35),
     transparent
   );
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  opacity: 0.7;
 }
 
-.bottom-nav-inner {
-  border-radius: 20px;
-  padding: 8px 10px;
-  background:
-    radial-gradient(circle at top, #1b1f2b 0, #141722 55%, #05060A 100%);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+/* ===== METALICZNE PRZYCISKI ===== */
+
+.icon-button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 0%, #2A2A2A 0%, #0F0F0F 60%, #000 100%);
+  border: 1px solid rgba(255,255,255,0.25);
   box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 1),
-    0 -16px 34px rgba(0, 0, 0, 1);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.bottom-nav-item {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
-  font-size: 9px;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: #8C8C96;
-}
-
-.bottom-nav-icon {
-  width: 22px;
-  height: 22px;
-  border-radius: 999px;
-  background:
-    radial-gradient(circle at 30% 0%, #26293a 0, #151824 55%, #05060A 100%);
+    0 0 0 1px rgba(255,255,255,0.1),
+    0 10px 24px rgba(0,0,0,1),
+    inset 0 0 12px rgba(255,255,255,0.05);
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #E5E5E5;
+  transition: 0.2s ease;
+}
+
+.icon-button:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,0.6);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.4),
+    0 14px 30px rgba(0,0,0,1),
+    inset 0 0 18px rgba(255,255,255,0.12);
+}
+
+/* ===== METALICZNE KAFELKI ===== */
+
+.board-tile {
+  background: linear-gradient(145deg, #111 0%, #050505 60%, #000 100%);
+  border-radius: 14px;
+  padding: 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.05),
+    0 12px 26px rgba(0,0,0,1),
+    inset 0 0 14px rgba(255,255,255,0.03);
+}
+
+/* ===== METALICZNY DOLNY NAV ===== */
+
+.bottom-nav-inner {
+  background: linear-gradient(180deg, #0F0F0F 0%, #000 100%);
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.05),
+    0 -14px 30px rgba(0,0,0,1),
+    inset 0 0 18px rgba(255,255,255,0.03);
 }
 
 .bottom-nav-item--active {
-  color: #F6CF8F;
+  color: #CFCFCF;
 }
 
 .bottom-nav-item--active .bottom-nav-icon {
-  border: 1px solid rgba(198, 161, 91, 0.9);
+  border: 1px solid rgba(255,255,255,0.4);
   box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 1),
-    0 12px 26px rgba(0, 0, 0, 1);
+    0 0 0 1px rgba(255,255,255,0.2),
+    0 10px 20px rgba(0,0,0,1),
+    inset 0 0 12px rgba(255,255,255,0.1);
 }
