@@ -155,3 +155,150 @@ body {
     0 12px 24px rgba(0,0,0,1),
     inset 0 0 14px rgba(255,255,255,0.1);
 }
+/* TŁO – głęboka czerń + subtelna poświata */
+body {
+  margin: 0;
+  background: #000;
+  color: #e5e5e5;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(255,255,255,0.05) 0%, transparent 55%),
+    radial-gradient(circle at 80% 100%, rgba(255,255,255,0.04) 0%, transparent 60%),
+    #000;
+}
+
+/* KARTA – „prawdziwa” stal 3D */
+.card {
+  position: relative;
+  width: 340px;
+  padding: 20px 18px;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(255,255,255,0.18) 0%, transparent 45%),
+    radial-gradient(circle at 100% 100%, rgba(0,0,0,0.9) 0%, transparent 55%),
+    linear-gradient(145deg, #181818 0%, #050505 45%, #000 100%);
+  border: 1px solid rgba(255,255,255,0.16);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.08),
+    0 22px 50px rgba(0,0,0,1),
+    inset 0 0 26px rgba(255,255,255,0.06);
+  overflow: hidden;
+}
+
+/* delikatne „szlify” na metalu */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(255,255,255,0.06) 0px,
+      rgba(255,255,255,0.06) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+  opacity: 0.18;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+/* górny metaliczny highlight */
+.card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 18%;
+  right: 18%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.55),
+    transparent
+  );
+  opacity: 0.9;
+}
+
+/* nagłówek jak grawer */
+.card-title {
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #d6d6d6;
+  margin-bottom: 8px;
+}
+
+.card-main {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.card-sub {
+  font-size: 0.85rem;
+  color: #b0b0b0;
+  margin-bottom: 16px;
+}
+
+/* PRZYCISK – metal + szkło + ciężki cień */
+.btn-metal {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.35);
+  background:
+    radial-gradient(circle at 20% 0%, rgba(255,255,255,0.35) 0%, transparent 55%),
+    radial-gradient(circle at 80% 100%, rgba(0,0,0,1) 0%, transparent 60%),
+    linear-gradient(145deg, #2a2a2a 0%, #101010 45%, #000 100%);
+  color: #f0f0f0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.18),
+    0 18px 40px rgba(0,0,0,1),
+    inset 0 0 18px rgba(255,255,255,0.12);
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+/* wewnętrzny połysk */
+.btn-metal::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: inherit;
+  background: radial-gradient(circle at 20% 0%, rgba(255,255,255,0.25) 0%, transparent 55%);
+  opacity: 0.6;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.btn-metal:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,0.7);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.4),
+    0 24px 52px rgba(0,0,0,1),
+    inset 0 0 24px rgba(255,255,255,0.18);
+}
+
+.btn-metal:active {
+  transform: translateY(0);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.3),
+    0 12px 26px rgba(0,0,0,1),
+    inset 0 0 26px rgba(255,255,255,0.22);
+}
